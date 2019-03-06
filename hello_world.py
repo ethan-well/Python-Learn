@@ -1,3 +1,5 @@
+from test_module import test_module as test_module_remote
+
 print('Hello world!')
 message = 'test traceback'
 print(message)
@@ -75,8 +77,35 @@ test_list = ['name1', 'age1']
 
 def test(list):
     list[0] = 'name2'
+    print("test function:")
+    print(list)
+
 test(test_list)
 print(test_list)
 
+def test2(list):
+    list[0] = 'name3'
+    print('test2 function:')
+    print(list)
+test2(test_list[:])
+print(test_list)
 
+def build_profile(first, last, **user_info):
+    print(first)
+    print(last)
+    print(user_info)
 
+build_profile('firstname', 'lastname', age=11)
+
+test_module_remote()
+
+def test_module():
+    print('local')
+
+test_module()
+
+def function_name(
+        parameter_0, parameter_1, parameter_2,
+        parameter_3, parameter_4, parameter_5):
+    """test"""
+    print("test")
