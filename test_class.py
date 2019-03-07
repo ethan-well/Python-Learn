@@ -15,3 +15,5 @@ class Dog():
 dog = Dog('旺财', 12)
 dog.sit()
 dog.roll_over()
+print(dog.name)
+print(dog.age)
