@@ -13,3 +13,9 @@ def read_file2():
         print(line)
 
 read_file2()
+
+def write_file():
+    with open("./test_write.txt", "w") as file_object:
+        file_object.write("test write line 1\n")
+        file_object.write("test write line 2\n")
+write_file()
