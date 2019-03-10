@@ -13,4 +13,7 @@ urlpatterns = [
 
     # 特定主题详细页面
     url(r'^topics/(?P<topic_id>\d+)/$', views.topic, name='topic'),
+
+    # 添加新主题
+    url(r'^new_topic/$', views.new_topic, name='new_topic'),
 ]
