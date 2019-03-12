@@ -5,24 +5,24 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from . import views
 
+def logout_view(request):
+    """注销用户"""
+    logout(request)
+    return HttpResponseRedirect(reverse('learning_logs:index'))
+
 # Create your views here.
 def register(request):
     """register user"""
     if request.method != 'POST':
         form = UserCreationForm()
     else:
-        form = UserCreationForm  (data=request.POST)
+        form = UserCreationForm(data=request.POST)
         if form.is_valid():
             new_user = form.save()
-            authenticated_user = authenticate(username=new_user.username)
+            # authenticated_user = authenticate(username=new_user.username)
             password = request.POST['password1']
-            login(request, authenticated_user)
+            login(request, new_user, backend='django.contrib.auth.backends.ModelBackend')
             return HttpResponseRedirect(reverse('learning_logs:index'))
     context = {'form': form}
     return render(request, 'users/register.html', context)
-
-def logout_view(request):
-    """注销用户"""
-    logout(request)
-    return HttpResponseRedirect(reverse('learning_logs:index'))
 
